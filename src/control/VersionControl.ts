@@ -9,7 +9,7 @@ export class VersionControl implements Control {
         return this.controlCharactor
     }
 
-    execute() {
+    async execute() {
         console.log('0.0.9');
     }
 }

@@ -12,7 +12,7 @@ export class ListControl implements Control {
         return this.controlCharactor
     }
 
-    execute() {
+    async execute() {
         console.log(this.reader.readAll());
     }
 }

@@ -49,7 +49,7 @@ export class FindControl implements Control {
                     return answer.context
                 });
             if (choiced !== 'Exit') {
-                open(parseSite(choiced));
+                return choiced;
             }
         }
 

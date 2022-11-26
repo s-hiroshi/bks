@@ -7,13 +7,16 @@ export class App {
 
     }
 
-    run(args: any) {
+    async run(args: any) {
         const [command, query, ...subQeuries] = args
         if (!command) return;
         const control = this.controlRepository.find(command)
         if (control != undefined) {
             try {
-                control.execute(query)
+                const result = await control.execute(query)
+                if (typeof result === 'string') {
+                    open(parseSite(result));
+                }
             } catch (e: any) {
                 console.log(e.message);
             }
