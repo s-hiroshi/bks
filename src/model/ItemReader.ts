@@ -31,6 +31,25 @@ export class ItemReader {
     return matchedItems;
   }
 
+/**
+   * @param keyword
+   * @param content
+   * @return Items[]
+   */
+  readItemStrict(keyword: string, content: string): Item[] {
+    if (! this.hasStorage || !keyword || !content)  {
+        throw new Error();
+    }
+    const matchedItems: Item[] = [];
+    this.data.items.forEach((item: Item, index: number) => {
+      if (item.keyword.indexOf(keyword) >= 0 && item.content.indexOf(content) >= 0) {
+        matchedItems.push(item);
+      }
+    });
+    return matchedItems;
+  }
+
+
   /**
    * 
    * @returns Item[]

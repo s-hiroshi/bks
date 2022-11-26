@@ -1,7 +1,5 @@
 const inquirer = require('inquirer');
-const open = require('open');
 import { createChoices } from "../service/createChoices";
-import { parseSite } from "../service/parseSite";
 
 export class FindControl implements Control {
     controlCharactor = 'find';
@@ -13,7 +11,6 @@ export class FindControl implements Control {
     }
 
     async execute(query?: string) {
-
         if (!query) {
             query = await inquirer
                 .prompt([
