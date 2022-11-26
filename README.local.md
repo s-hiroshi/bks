@@ -28,8 +28,10 @@ ref. https://chaika.hatenablog.com/entry/2019/08/15/000000
 
 ref. https://stackoverflow.com/questions/34353512/node-npm-package-throw-use-strict-command-not-found-after-publish-and-install-g
 
-## 内容
+# Test
 
+<https://stackoverflow.com/questions/68351994/jest-mock-a-module-to-produce-different-results-on-function-calls>
+## 内容
 
 Cli bookmark.
 
