@@ -1,7 +1,3 @@
-const fs = require('fs');
-require('dotenv').config();
-import { Octokit, App } from "octokit";
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 export class VersionControl implements Control {
     controlCharactor = 'version';
 
@@ -10,6 +6,6 @@ export class VersionControl implements Control {
     }
 
     async execute() {
-        console.log('0.0.9');
+        console.log('0.0.10');
     }
 }

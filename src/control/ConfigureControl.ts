@@ -6,9 +6,10 @@ import { createStorage } from "../service/createStorage";
 export class ConfigureControl implements Control {
     controlCharactor = 'configure';
     private storageTypes = ['local', 'GitHub'];
+    private homeDir = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
     private config = {
         'STORAGE_TYPE': 'local',
-        'STORAGE_PATH': 'storage/data.json',
+        'STORAGE_PATH': `${this.homeDir}/.config/s-hiroshi/bks/data.json`,
         'GITHUB_TOKEN': '',
         'GIST_ID': ''
     }
@@ -39,7 +40,7 @@ export class ConfigureControl implements Control {
                         {
                             name: 'context',
                             message: 'Input local data storage path',
-                            default: 'storage/data.json',
+                            default: `${this.homeDir}/.config/s-hiroshi/bks/data.json`,
                             loop: false
                         }
                     ]
@@ -48,7 +49,7 @@ export class ConfigureControl implements Control {
                     return answer.context;
 
                 });
-            createStorage(`${process.cwd()}/${this.config.STORAGE_PATH}`)
+            createStorage(this.config.STORAGE_PATH)
         }
         if (this.config.STORAGE_TYPE === 'GitHub') {
             this.config.STORAGE_PATH = await inquirer
@@ -57,7 +58,7 @@ export class ConfigureControl implements Control {
                         {
                             name: 'context',
                             message: 'Input local data storage path',
-                            default: 'storage/data.json',
+                            default: `${this.homeDir}/.config/s-hiroshi/bks/data.json`,
                             loop: false
                         }
                     ]
@@ -65,7 +66,7 @@ export class ConfigureControl implements Control {
                 .then((answer: Answer) => {
                     return answer.context;
                 });
-            createStorage(`${process.cwd()}/${this.config.STORAGE_PATH}`)
+            createStorage(this.config.STORAGE_PATH)
 
             this.config.GITHUB_TOKEN = await inquirer
                 .prompt(
@@ -98,7 +99,7 @@ export class ConfigureControl implements Control {
         }
 
         fs.writeFileSync(
-            `${process.cwd()}/.env`,
+            `${this.homeDir}/.config/s-hiroshi/bks/.env`,
             `STORAGE_TYPE=${this.config.STORAGE_TYPE}
 STORAGE_PATH=${this.config.STORAGE_PATH}
 GITHUB_TOKEN=${this.config.GITHUB_TOKEN}

@@ -20,16 +20,18 @@ import { VersionControl } from './control/VersionControl';
 import { ConfigureControl } from './control/ConfigureControl';
 import { createStorage } from './service/createStorage';
 
-require('dotenv').config();
+const homeDir = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
+
+require('dotenv').config({ path: `${homeDir}/.config/s-hiroshi/bks/.env`});
 
 let storage = '';
 if (!process.env.STORAGE_PATH) {
-    createStorage(`${process.cwd()}/storage/data.json`)
-    storage= `${process.cwd()}/storage/data.json`;
+    createStorage(`${homeDir}/.config/s-hiroshi/bks/data.json`);
+    storage = `${homeDir}/.config/s-hiroshi/bks/data.json`;
 }
 
 if (process.env.STORAGE_PATH) {
-    storage = `${process.cwd()}/${process.env.STORAGE_PATH}`;
+    storage = process.env.STORAGE_PATH;
 }
 
 const reader: Reader = new ItemReader(storage);

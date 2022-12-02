@@ -1,8 +1,3 @@
-const fs = require('fs');
-require('dotenv').config();
-import { Octokit, App } from "octokit";
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-
 export class HelpControl implements Control {
     controlCharactor = 'help';
 
@@ -10,7 +5,7 @@ export class HelpControl implements Control {
         return this.controlCharactor
     }
 
-    execute() {
+    async execute() {
         const content =`
 # bks
 

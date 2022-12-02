@@ -11,7 +11,7 @@ export class RemoveControl implements Control {
         return this.controlCharactor
     }
 
-    execute() {
+    async execute() {
         let  choices = this.reader.readAll().map((item: Item) => {
             return  `${item.keyword}::${item.content}`;
         });

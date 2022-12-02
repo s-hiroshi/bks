@@ -1,5 +1,6 @@
 const fs = require('fs');
-require('dotenv').config();
+const homeDir = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
+require('dotenv').config({ path: `${homeDir}/.config/s-hiroshi/bks/.env` });
 import { Octokit, App } from "octokit";
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
@@ -25,9 +26,9 @@ export class UploadControl implements Control {
          * https://stackoverflow.com/questions/65518288/python-how-to-edit-update-a-github-gist
          */
         let content = '';
-        if (fs.existsSync(`${process.cwd()}/${process.env.STORAGE_PATH}`)) {
+        if (fs.existsSync(process.env.STORAGE_PATH)) {
             content =
-                fs.readFileSync(`${process.cwd()}/${process.env.STORAGE_PATH}`, { encodin: 'utf8' }).toString();
+                fs.readFileSync(process.env.STORAGE_PATH, { encodin: 'utf8' }).toString();
         }
         octokit.rest.gists.update({
             "gist_id": process.env.GIST_ID!,
