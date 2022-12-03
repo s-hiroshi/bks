@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs')
 import { createStorage } from "../service/createStorage";
-// import { createChoices } from '../service/choices'
 
 export class ConfigureControl implements Control {
     controlCharactor = 'configure';
