@@ -18,6 +18,7 @@ import { UploadControl } from './control/UploadControl';
 import { HelpControl } from './control/HelpControl';
 import { VersionControl } from './control/VersionControl';
 import { ConfigureControl } from './control/ConfigureControl';
+import { ImportControl} from './control/ImportControl';
 import { createStorage } from './service/createStorage';
 
 const homeDir = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
@@ -50,6 +51,7 @@ controlRepository.add(new UploadControl());
 controlRepository.add(new HelpControl());
 controlRepository.add(new VersionControl());
 controlRepository.add(new ConfigureControl());
+controlRepository.add(new ImportControl(writer));
 
 (function () {
     const app = new App(reader, writer, controlRepository);

@@ -1,6 +1,6 @@
 # bks
 
-CLI site bookmark application.
+CLI site bookmark application for Mac.
 
 
 ## Usage
@@ -17,6 +17,7 @@ Available Commands:
   find        Find bookmark in file 
   efind       Extended Finder is incremental search in file
   help        Show help
+  import      Import Google Chrome bookmark
   list        Show all bookmarks
   new         Create a new bookmarks
   rm          Remove bookmark
@@ -52,3 +53,9 @@ $ bks configure
 1. Create Gist with file name bks-contents.json(filename is important)
 1. bks configure
 1. Input local file、Personal Access Token, GIST ID
+
+## Import Google Chrome bookmark
+
+1. `manual` Export Google Chrome bookmark file(.html)
+1. bks import
+1. Imput exported Google Chrome bookmark file(`1.`)

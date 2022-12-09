@@ -1,6 +1,6 @@
 {
   "name": "@s-hiroshi/bks",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Cli bookmarks application",
   "main": "dist/index.js",
   "types": "src/@type/app.d.ts",
@@ -24,8 +24,7 @@
     "inquirer": "^8.2.0",
     "inquirer-autocomplete-prompt": "^2.0.0",
     "octokit": "^2.0.10",
-    "open": "^8.4.0",
-    "toml": "^3.0.0"
+    "open": "^8.4.0"
   },
   "devDependencies": {
     "@types/jest": "^29.2.3",

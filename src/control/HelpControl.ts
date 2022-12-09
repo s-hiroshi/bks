@@ -6,7 +6,7 @@ export class HelpControl implements Control {
     }
 
     async execute() {
-        const content =`
+        const content = `
 # bks
 
 CLI site bookmark application.
@@ -57,7 +57,13 @@ $ bks configure
 1. Create Gist with file name bks-contents.json(filename is important)
 1. bks configure
 1. Input Personal Access Token, GIST ID
+
+## Import Google Chrome bookmark
+
+1. manual Export chrome bookmark file(.html)
+1. bks import
+1. Imput exported chrome bookmark file
 `
         console.log(content);
-                    }
+    }
 }

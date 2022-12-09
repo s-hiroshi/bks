@@ -93,6 +93,24 @@ export class ItemWriter {
       }
   }
 
+  /**
+   * @param items 
+   */
+  addAll(items: Item[]) {
+    if (this.hasStorage) {
+        this.read();
+        items.forEach((item: Item) => {
+            this.append(item)
+        }); 
+    } else {
+        this.create();
+        this.read();
+        items.forEach((item: Item) => {
+            this.append(item)
+        }); 
+    }
+  }
+
   edit(keyword: string, content: string): void {
       this.read();
       this.update(keyword, content)

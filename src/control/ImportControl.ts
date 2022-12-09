@@ -1,10 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs')
+import { parseBookmark } from "../service/parseBookmarks";
 
 export class ImportControl implements Control {
     controlCharactor = 'import';
-    
-    constructor(private reader: Reader) { }
+
+    constructor(private writer: Writer) { }
 
     getControlCharactor(): string {
         return this.controlCharactor
@@ -16,7 +17,7 @@ export class ImportControl implements Control {
                 [
                     {
                         name: 'context',
-                        message: 'Input Chrome exported bookmark file',
+                        message: 'Input Google Chrome exported bookmark file',
                         loop: false
                     }
                 ]
@@ -25,9 +26,15 @@ export class ImportControl implements Control {
                 return answer.context;
             });
 
-        
-        // parseBookmarks
-        // write bookmark data to data.json 
-
+        console.log(fs.existsSync(file));
+        try {
+            if (!fs.existsSync(file)) {
+                console.log(`file is not found: ${file}`);
+            }
+            const items = await parseBookmark(file);
+            this.writer.addAll(items);
+        } catch (err) {
+            console.error(err)
+        }
     }
 }

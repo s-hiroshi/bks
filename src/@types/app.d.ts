@@ -17,6 +17,7 @@ type Reader = {
 type Writer = {
     write()
     add(item: Item)
+    addAll(items: Item[])
     edit(keyword: string, content: string)
     delete(keyword: string, content: string)
 }
