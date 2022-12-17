@@ -46,7 +46,7 @@ $ bks configure
 
 ## Use local file
 
-- Recommend storage/data.json(default)
+- Recommend /{{YOUR_HOME_DIR}}/.config/s-hiroshi/bks/data.json
 
 ## Use Gist
 

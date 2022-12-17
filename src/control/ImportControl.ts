@@ -26,12 +26,12 @@ export class ImportControl implements Control {
                 return answer.context;
             });
 
-        console.log(fs.existsSync(file));
         try {
             if (!fs.existsSync(file)) {
                 console.log(`file is not found: ${file}`);
             }
             const items = await parseBookmark(file);
+            console.log('In progress')
             this.writer.addAll(items);
         } catch (err) {
             console.error(err)
