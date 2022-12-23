@@ -2,7 +2,6 @@
 
 CLI site bookmark application for Mac.
 
-
 ## Usage
 
 ```
