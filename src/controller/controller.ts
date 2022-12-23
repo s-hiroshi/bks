@@ -2,7 +2,7 @@ const open = require('open');
 import { parseSite } from '../service/parseSite';
 import { ControlRepository } from '../control/ControlRepository';
 
-export class App {
+export class Controller {
     constructor(private reader: Reader, private writer: Writer, private controlRepository: ControlRepository) {
 
     }

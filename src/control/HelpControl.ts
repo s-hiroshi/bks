@@ -36,8 +36,9 @@ e.g
 
 - bks example.com     Open https://example.com
 - bks find            Display choices from a bookmark file
-- bks find example    Display choices that correspond to keywords
-- bks search example  Search for KEYWORD on Google
+- bks find keyword    Display choices that correspond to keywords
+- bks efind           Display increment search
+- bks search keyword  Search for keyword on Google
 
 ## Configuration
 

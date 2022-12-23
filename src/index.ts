@@ -2,7 +2,7 @@
 
 const program = require('commander');
 
-import { App } from './controller/app';
+import { Controller } from './controller/controller';
 import { ItemReader } from './model/ItemReader';
 import { ItemWriter } from './model/ItemWriter';
 import { ControlRepository } from './control/ControlRepository';
@@ -54,7 +54,7 @@ controlRepository.add(new ConfigureControl());
 controlRepository.add(new ImportControl(writer));
 
 (function () {
-    const app = new App(reader, writer, controlRepository);
+    const app = new Controller(reader, writer, controlRepository);
     program.parse(process.argv)
     app.run(program.args);
 }());
