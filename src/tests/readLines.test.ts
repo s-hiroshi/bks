@@ -1,13 +1,16 @@
+const fs = require('fs');
 import {readLines} from '../service/readLines'
+
 /*
  * @see
  * https://dev.classmethod.jp/articles/alternative-solution-when-tests-with-tobe-matcher-fail-in-jest/
  */
 test('read', async () => {
-    const actual = await readLines('/Users/shiroshi/.config/s-hiroshi/bks/data.json');
-    expect(actual).toHaveLength(1)
-    console.log(actual)
-    // expect(parseSite('example.com')).toBe('https://example.com');
+    const actual = await readLines(`${process.cwd()}/src/tests/storage/data.json`);
+    expect(actual).toMatch(/example/);
+    fs.writeFileSync(`${process.cwd()}/src/tests/storage/output.json`, actual, { encoding: 'utf8'}, (err: Error) => {
+      if (err) throw err;
+    });
 });
 
 
