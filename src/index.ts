@@ -3,7 +3,7 @@
 const program = require('commander');
 
 import { Controller } from './controller/controller';
-import { ItemReader } from './model/ItemReader';
+import { ItemReaderOneLine } from './model/ItemReaderOneLine';
 import { ItemWriter } from './model/ItemWriter';
 import { ControlRepository } from './control/ControlRepository';
 import { NewControl } from './control/NewControl';
@@ -18,12 +18,12 @@ import { UploadControl } from './control/UploadControl';
 import { HelpControl } from './control/HelpControl';
 import { VersionControl } from './control/VersionControl';
 import { ConfigureControl } from './control/ConfigureControl';
-import { ImportControl} from './control/ImportControl';
+import { ImportControl } from './control/ImportControl';
 import { createStorage } from './service/createStorage';
 
 const homeDir = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
 
-require('dotenv').config({ path: `${homeDir}/.config/s-hiroshi/bks/.env`});
+require('dotenv').config({ path: `${homeDir}/.config/s-hiroshi/bks/.env` });
 
 let storage = '';
 if (!process.env.STORAGE_PATH) {
@@ -35,26 +35,27 @@ if (process.env.STORAGE_PATH) {
     storage = process.env.STORAGE_PATH;
 }
 
-const reader: Reader = new ItemReader(storage);
-const writer: Writer = new ItemWriter(storage);
-const controlRepository: ControlRepository = new ControlRepository();
+const app = async () => {
+    const reader: Reader = new ItemReaderOneLine(storage);
+    const writer: Writer = new ItemWriter(storage);
+    const controlRepository: ControlRepository = new ControlRepository();
 
-controlRepository.add(new NewControl(writer));
-controlRepository.add(new SearchControl());
-controlRepository.add(new ListControl(reader));
-controlRepository.add(new FindControl(reader));
-controlRepository.add(new ExpandedFinder(reader));
-controlRepository.add(new RemoveControl(reader, writer));
-controlRepository.add(new EditControl(reader, writer));
-controlRepository.add(new DowonloadControl());
-controlRepository.add(new UploadControl());
-controlRepository.add(new HelpControl());
-controlRepository.add(new VersionControl());
-controlRepository.add(new ConfigureControl());
-controlRepository.add(new ImportControl(writer));
+    controlRepository.add(new NewControl(writer));
+    controlRepository.add(new SearchControl());
+    controlRepository.add(new ListControl(reader));
+    controlRepository.add(new FindControl(reader));
+    controlRepository.add(new ExpandedFinder(reader));
+    controlRepository.add(new RemoveControl(reader, writer));
+    controlRepository.add(new EditControl(reader, writer));
+    controlRepository.add(new DowonloadControl());
+    controlRepository.add(new UploadControl());
+    controlRepository.add(new HelpControl());
+    controlRepository.add(new VersionControl());
+    controlRepository.add(new ConfigureControl());
+    controlRepository.add(new ImportControl(writer));
 
-(function () {
-    const app = new Controller(reader, writer, controlRepository);
+    const controller = new Controller(reader, writer, controlRepository);
     program.parse(process.argv)
-    app.run(program.args);
-}());
+    controller.run(program.args);
+};
+app();

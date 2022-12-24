@@ -6,7 +6,7 @@ const readline = require("readline");
  * @param filePath 
  * @returns 
  */
-export async function readLines(filePath: string): Promise<String> {
+export async function readLines(filePath: string): Promise<string> {
 
     // @see https://blog.katsubemakito.net/nodejs/file-read
     const stream = fs.createReadStream(filePath, {
