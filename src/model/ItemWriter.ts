@@ -13,6 +13,7 @@ export class ItemWriter {
         this.hasStorage = fs.existsSync(storageFilePath);
         this.data = null;
     }
+
     /**
      * create storage file
      */
@@ -81,7 +82,8 @@ export class ItemWriter {
     }
 
     /**
-     * add data
+     * Add item
+     * @param item 
      */
     add(item: Item): void {
         if (this.hasStorage) {
@@ -95,6 +97,7 @@ export class ItemWriter {
     }
 
     /**
+     * Add Items
      * @param items 
      */
     addAll(items: Item[]) {
@@ -113,7 +116,7 @@ export class ItemWriter {
     }
 
     /**
-     * 
+     * Edit item
      * @param keyword 
      * @param content 
      */
@@ -123,7 +126,7 @@ export class ItemWriter {
     }
 
     /**
-     * 
+     * Delete item
      * @param keyword string
      */
     delete(keyword: string, content: string): void {

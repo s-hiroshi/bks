@@ -18,7 +18,6 @@ export class ItemReaderOneLine {
     this.data =  JSON.parse(await readLines(this.storageFilePath));
   }
 
-
   /**
    * @param keyword
    * @param content
@@ -54,7 +53,6 @@ export class ItemReaderOneLine {
     });
     return matchedItems;
   }
-
 
   /**
    * 
