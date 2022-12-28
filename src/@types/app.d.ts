@@ -15,10 +15,9 @@ type Reader = {
     readAll(): Items;
 }
 type Writer = {
-    write()
     add(item: Item)
     addAll(items: Item[])
-    edit(keyword: string, content: string)
+    edit(newItem:Item, oldItem: Item)
     delete(keyword: string, content: string)
 }
 // type implementできる

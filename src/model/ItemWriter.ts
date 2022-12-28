@@ -32,9 +32,13 @@ export class ItemWriter {
         this.data = JSON.parse(fs.readFileSync(this.storageFilePage, { encodin: 'utf8' }));
     }
 
+    /**
+     * Write storage file
+     */
     write() {
         fs.writeFileSync(this.storageFilePage, JSON.stringify(this.data), { encoding: 'utf8' }, (err: Error) => {
             if (err) throw err;
+            return true;
         });
     }
 
@@ -44,23 +48,23 @@ export class ItemWriter {
      */
     append(item: Item) {
         this.data.items.push(item);
-        fs.writeFileSync(this.storageFilePage, JSON.stringify(this.data, null, '  '), { encoding: 'utf8' }, (err: Error, data: object) => {
-            if (err) throw err;
-            return true;
-        });
+        this.write();
     }
 
-    update(keyword: string, content: string) {
-        this.data.items = this.data.items.map((item: Item) => {
-            if (item.keyword.indexOf(keyword) >= 0) {
-                item.content = content;
+    /**
+     * Update data in storage file
+     * @param newItem 
+     * @param oldItem 
+     */
+    update(newItem: Item, oldItem: Item) {
+        this.data.items = this.data.items.map((item: Item, index: number) => {
+            if (item.keyword === oldItem.keyword && item.content === oldItem.content) {
+                item.keyword = newItem.keyword;
+                item.content = newItem.content;
             }
             return item;
         });
-        fs.writeFileSync(this.storageFilePage, JSON.stringify(this.data, null, '  '), { encoding: 'utf8' }, (err: Error, data: object) => {
-            if (err) throw err;
-            return true;
-        })
+        this.write();
     }
 
     /**
@@ -73,10 +77,7 @@ export class ItemWriter {
                 return item;
             }
         });
-        fs.writeFileSync(this.storageFilePage, JSON.stringify(this.data, null, '  '), { encoding: 'utf8' }, (err: Error, data: object) => {
-            if (err) throw err;
-            return true;
-        })
+        this.write();
     }
 
     /**
@@ -111,9 +112,14 @@ export class ItemWriter {
         }
     }
 
-    edit(keyword: string, content: string): void {
+    /**
+     * 
+     * @param keyword 
+     * @param content 
+     */
+    edit(newItem: Item, oldItem: Item): void {
         this.read();
-        this.update(keyword, content)
+        this.update(newItem, oldItem)
     }
 
     /**

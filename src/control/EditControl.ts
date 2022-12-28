@@ -13,8 +13,11 @@ export class EditControl implements Control {
         let choices = this.reader.readAll().map((item: Item) => {
             return `${item.keyword}::${item.content}`;
         });
-        // choices = createChoices(choices)
 
+        if (choices.length < 1) {
+            console.log('content not Founded')
+            return false;
+        }
         const choiced = await inquirer
             .prompt([
                 {
@@ -29,12 +32,11 @@ export class EditControl implements Control {
                 return answer.context
             });
 
-
-
         const item: Item = {
             keyword: '',
             content: ''
         };
+
         await inquirer
             .prompt([
                 {
@@ -63,8 +65,7 @@ export class EditControl implements Control {
 
             });
 
-        this.writer.add(item);
-        this.writer.delete(choiced.split('::')[0], choiced.split('::')[1]);
+        this.writer.edit(item,{ 'keyword': choiced.split('::')[0], 'content': choiced.split('::')[1]} )
 
     }
 }
