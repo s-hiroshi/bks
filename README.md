@@ -2,6 +2,35 @@
 
 CLI site bookmark application for Mac.
 
+## Set up
+
+### Install
+
+```
+$ npm i -g @s-hiroshi/bks
+```
+
+### Configuration
+
+```
+$ bks configure
+```
+
+#### Storage
+
+- local file
+- Gist
+
+##### Use local file
+
+- Recommend /{{YOUR_HOME_DIR}}/.config/s-hiroshi/bks/data.json
+
+##### Use Gist
+
+1. Create Gist with file name bks-contents.json(filename is important)
+1. bks configure
+1. Input local file、Personal Access Token, GIST ID
+
 ## Usage
 
 ```
@@ -12,9 +41,9 @@ Available Commands:
 
   configure   Edit config file
   download    Dowonload from Gist
-  edit        Edit bookmark file
-  find        Find bookmark in file 
-  efind       Extended Finder is incremental search in file
+  edit        Edit data file
+  find        Find data in file 
+  efind       Extended Finder is incremental search in data file
   help        Show help
   import      Import Google Chrome bookmark
   list        Show all bookmarks
@@ -33,28 +62,9 @@ e.g
 - `bks efind`           Display increment search
 - `bks search keyword`  Search for keyword on Google
 
-## Configuration
-
-```
-$ bks configure
-```
-
-## Storage
-
-- local file
-- Gist
-
-## Use local file
-
-- Recommend /{{YOUR_HOME_DIR}}/.config/s-hiroshi/bks/data.json
-
-## Use Gist
-
-1. Create Gist with file name bks-contents.json(filename is important)
-1. bks configure
-1. Input local file、Personal Access Token, GIST ID
-
 ## Import Google Chrome bookmark
+
+This command overwrites, not appends!!
 
 1. `manual` Export Google Chrome bookmark file(.html)
 1. bks import

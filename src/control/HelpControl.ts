@@ -9,8 +9,32 @@ export class HelpControl implements Control {
         const content = `
 # bks
 
-CLI site bookmark application.
+CLI site bookmark application for Mac.
 
+## Set up
+
+### Install
+
+$ npm i -g @s-hiroshi/bks
+
+### Configuration
+
+$ bks configure
+
+#### Storage
+
+- local file
+- Gist
+
+##### Use local file
+
+- Recommend /{{YOUR_HOME_DIR}}/.config/s-hiroshi/bks/data.json
+
+##### Use Gist
+
+1. Create Gist with file name bks-contents.json(filename is important)
+1. bks configure
+1. Input local file、Personal Access Token, GIST ID
 
 ## Usage
 
@@ -19,18 +43,19 @@ bks <command> <query>
 
 Available Commands:
 
-    configure   Edit config file
-    download    Dowonload from Gist
-    edit        Edit bookmark file
-    find        Find bookmark in file 
-    efind       Extended Finder is incremental search in file
-    help        Show help
-    list        Show all bookmarks
-    new         Create a new bookmarks
-    rm          Remove bookmark
-    search      Search in google
-    upload      Upload to Gist
-    version     Print the version number
+  configure   Edit config file
+  download    Dowonload from Gist
+  edit        Edit data file
+  find        Find data in file 
+  efind       Extended Finder is incremental search in data file
+  help        Show help
+  import      Import Google Chrome bookmark
+  list        Show all bookmarks
+  new         Create a new bookmarks
+  rm          Remove bookmark
+  search      Search in google
+  upload      Upload to Gist
+  version     Print the version number
 
 e.g
 
@@ -40,30 +65,13 @@ e.g
 - bks efind           Display increment search
 - bks search keyword  Search for keyword on Google
 
-## Configuration
-
-$ bks configure
-
-## Storage
-
-- local file
-- Gist
-
-## Use local fail
-
-- Recommend storage/data.json(default)
-
-## Use Gist
-
-1. Create Gist with file name bks-contents.json(filename is important)
-1. bks configure
-1. Input Personal Access Token, GIST ID
-
 ## Import Google Chrome bookmark
 
-1. manual Export chrome bookmark file(.html)
+This command overwrites, not appends!!
+
+1. manual Export Google Chrome bookmark file(.html)
 1. bks import
-1. Imput exported chrome bookmark file
+1. Imput exported Google Chrome bookmark file(1.)
 `
         console.log(content);
     }
