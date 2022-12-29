@@ -1,3 +1,5 @@
+import { createChoices } from "../service/createChoices";
+
 const inquirer = require('inquirer');
 
 export class EditControl implements Control {
@@ -18,6 +20,9 @@ export class EditControl implements Control {
             console.log('content not Founded')
             return false;
         }
+
+        choices = createChoices(choices, ['Exit']);
+
         const choiced = await inquirer
             .prompt([
                 {
@@ -32,6 +37,9 @@ export class EditControl implements Control {
                 return answer.context
             });
 
+        if (choiced === 'Exit') {
+            return false;
+        }
         const item: Item = {
             keyword: '',
             content: ''
@@ -65,7 +73,7 @@ export class EditControl implements Control {
 
             });
 
-        this.writer.edit(item,{ 'keyword': choiced.split('::')[0], 'content': choiced.split('::')[1]} )
+        this.writer.edit(item, { 'keyword': choiced.split('::')[0], 'content': choiced.split('::')[1] })
         console.log('Completed');
 
     }
