@@ -23,7 +23,6 @@ export class ExpandedFinder implements Control {
         return this.controlCharactor
     }
 
-
     find() {
         // thisを束縛するためにアロー関数を使用
         return (answers: Answer, input = '') => {
@@ -40,7 +39,6 @@ export class ExpandedFinder implements Control {
     }
 
     async execute() {
-
         // @see https://github.com/mokkabonna/inquirer-autocomplete-prompt/blob/master/example.js
         inquirer.registerPrompt('autocomplete', inquirerPrompt);
         if (this.choices) {
@@ -52,7 +50,7 @@ export class ExpandedFinder implements Control {
                         suggestOnly: false,
                         searchText: 'Finding...',
                         emptyText: 'Nothing found!',
-                        message: 'Which one do you want to open',
+                        message: 'Input keyword',
                         source: this.find(),
                         loop: false
                     },

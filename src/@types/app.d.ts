@@ -10,6 +10,7 @@ type Answer = {
     context: string;
 }
 type Reader = {
+    init()
     readItem(keyword: string, content: string): Items[]
     readItemStrict(keyword: string, content: string): Items[]
     readAll(): Items;

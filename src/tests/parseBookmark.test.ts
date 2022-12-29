@@ -1,4 +1,4 @@
-import { parseBookmark } from '../service/parseBookmarks'; 
+import { parseBookmark } from '../service/parseBookmarks';
 
 /*
  * @see
@@ -7,8 +7,6 @@ import { parseBookmark } from '../service/parseBookmarks';
 test('read', async () => {
     const actual = await parseBookmark(`${process.cwd()}/src/tests/bookmarks.html`);
     expect(actual).toHaveLength(3)
-    console.log(actual)
-    // expect(parseSite('example.com')).toBe('https://example.com');
 });
 
 

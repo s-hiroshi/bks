@@ -9,7 +9,6 @@ test('FQDN', () => {
     expect(parseSite('example.com')).toBe('https://example.com');
 });
 
-
 test('DOMAIN', () => {
     const actual =  parseSite('example.com');
     expect(parseSite('example.com')).toBe('https://example.com');

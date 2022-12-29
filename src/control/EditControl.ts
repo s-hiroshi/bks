@@ -66,6 +66,7 @@ export class EditControl implements Control {
             });
 
         this.writer.edit(item,{ 'keyword': choiced.split('::')[0], 'content': choiced.split('::')[1]} )
+        console.log('Completed');
 
     }
 }

@@ -3,7 +3,7 @@
 const program = require('commander');
 
 import { Controller } from './controller/controller';
-import { ItemReaderOneLine } from './model/ItemReaderOneLine';
+import { ItemReader } from './model/ItemReader';
 import { ItemWriter } from './model/ItemWriter';
 import { ControlRepository } from './control/ControlRepository';
 import { NewControl } from './control/NewControl';
@@ -36,7 +36,8 @@ if (process.env.STORAGE_PATH) {
 }
 
 const app = async () => {
-    const reader: Reader = new ItemReaderOneLine(storage);
+    const reader: Reader = new ItemReader(storage);
+    await reader.init();
     const writer: Writer = new ItemWriter(storage);
     const controlRepository: ControlRepository = new ControlRepository();
 

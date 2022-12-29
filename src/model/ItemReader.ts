@@ -1,16 +1,22 @@
 const fs = require('fs');
+import { readLines } from '../service/readLines'
 
 export class ItemReader {
   private storageFilePath: string;
   private hasStorage: boolean;
+  // @see https://iwb.jp/typescript-properties-no-initializer-and-is-not-definitely-error/
   private data: Data;
 
   constructor(storageFilePath: string) {
     this.storageFilePath = storageFilePath;
     this.hasStorage = fs.existsSync(storageFilePath);
-    this.data = JSON.parse(
-      fs.readFileSync(this.storageFilePath, { encodin: 'utf8' })
-    );
+    // this.data = JSON.parse(
+    //   fs.readFileSync(this.storageFilePath, { encodin: 'utf8' })
+    // );
+  }
+
+  async init() {
+    this.data =  JSON.parse(await readLines(this.storageFilePath));
   }
 
   /**
@@ -48,7 +54,6 @@ export class ItemReader {
     });
     return matchedItems;
   }
-
 
   /**
    * 

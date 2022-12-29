@@ -31,6 +31,7 @@ export class RemoveControl implements Control {
                 if (answer.context !== 'Exit') {
                 const choiced = answer.context.split('::');
                 this.writer.delete(choiced[0], choiced[1]);
+                console.log('Completed')
                 }
             });
 
