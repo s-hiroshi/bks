@@ -13,11 +13,11 @@ export class EditControl implements Control {
 
     async execute() {
         let choices = this.reader.readAll().map((item: Item) => {
-            return `${item.keyword}::${item.content}`;
+            return `keyword: ${item.keyword}\n  url: ${item.content}`;
         });
 
         if (choices.length < 1) {
-            console.log('content not Founded')
+            console.log('Content not Founded')
             return false;
         }
 
@@ -40,6 +40,8 @@ export class EditControl implements Control {
         if (choiced === 'Exit') {
             return false;
         }
+
+        const choicedItem = this.getChoicedItem(choiced);
         const item: Item = {
             keyword: '',
             content: ''
@@ -50,7 +52,7 @@ export class EditControl implements Control {
                 {
                     name: 'context',
                     message: 'keyword',
-                    default: 'example',
+                    default: choicedItem.keyword,
                 },
             ])
             .then((answer: Answer) => {
@@ -63,7 +65,7 @@ export class EditControl implements Control {
                     {
                         name: 'context',
                         message: 'url',
-                        default: 'https://example.com'
+                        default: choicedItem.content
                     },
                 ]);
             })
@@ -73,8 +75,18 @@ export class EditControl implements Control {
 
             });
 
-        this.writer.edit(item, { 'keyword': choiced.split('::')[0], 'content': choiced.split('::')[1] })
+        this.writer.edit(item, { 'keyword': choicedItem.keyword, 'content': choicedItem.content })
         console.log('Completed');
 
+    }
+
+    getChoicedItem(choiced: string) {
+        const choice = choiced.split('\n')
+        const keyword = choice[0].trim().split(' ')[1];
+        const url = choice[1].trim().split(' ')[1]
+        return {
+            keyword: keyword,
+            content: url
+        }
     }
 }
