@@ -1,6 +1,6 @@
 # bks
 
-CLI site bookmark application for Mac.
+CLI bookmark launcher application for Mac.
 
 ## Set up
 
@@ -23,7 +23,7 @@ $ bks configure
 
 ##### Use local file
 
-- Recommend /{{YOUR_HOME_DIR}}/.config/s-hiroshi/bks/data.json
+- Strictly Recommend /{{YOUR_HOME_DIR}}/.config/s-hiroshi/bks/data.json
 
 ##### Use Gist
 
@@ -49,7 +49,7 @@ Available Commands:
   list        Show all bookmarks
   new         Create a new bookmarks
   rm          Remove bookmark
-  search      Search in google
+  search      Search on google
   upload      Upload to Gist
   version     Print the version number
 ```
@@ -57,9 +57,9 @@ Available Commands:
 e.g
 
 - `bks example.com`     Open https://example.com
-- `bks find`            Display choices from a bookmark file
-- `bks find keyword`    Display choices that correspond to keywords
-- `bks efind`           Display increment search
+- `bks find`            Display choices from data file
+- `bks find keyword`    Display choices that correspond to keywords from data file
+- `bks efind`           Increment search in data file
 - `bks search keyword`  Search for keyword on Google
 
 ## Import Google Chrome bookmark
