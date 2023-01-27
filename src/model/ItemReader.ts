@@ -10,9 +10,6 @@ export class ItemReader {
   constructor(storageFilePath: string) {
     this.storageFilePath = storageFilePath;
     this.hasStorage = fs.existsSync(storageFilePath);
-    // this.data = JSON.parse(
-    //   fs.readFileSync(this.storageFilePath, { encodin: 'utf8' })
-    // );
   }
 
   async init() {
