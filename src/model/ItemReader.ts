@@ -13,7 +13,7 @@ export class ItemReader {
   }
 
   async init() {
-    this.data =  JSON.parse(await readLines(this.storageFilePath));
+    this.data = JSON.parse(await readLines(this.storageFilePath));
   }
 
   /**
@@ -22,8 +22,8 @@ export class ItemReader {
    * @return Items[]
    */
   readItem(keyword: string, content: string): Item[] {
-    if (! this.hasStorage || !keyword || !content)  {
-        throw new Error();
+    if (!this.hasStorage || !keyword || !content) {
+      throw new Error();
     }
     const matchedItems: Item[] = [];
     this.data.items.forEach((item: Item, index: number) => {
@@ -34,14 +34,14 @@ export class ItemReader {
     return matchedItems;
   }
 
-/**
-   * @param keyword
-   * @param content
-   * @return Items[]
-   */
+  /**
+     * @param keyword
+     * @param content
+     * @return Items[]
+     */
   readItemStrict(keyword: string, content: string): Item[] {
-    if (! this.hasStorage || !keyword || !content)  {
-        throw new Error();
+    if (!this.hasStorage || !keyword || !content) {
+      throw new Error();
     }
     const matchedItems: Item[] = [];
     this.data.items.forEach((item: Item, index: number) => {

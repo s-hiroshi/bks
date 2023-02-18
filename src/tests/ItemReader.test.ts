@@ -7,7 +7,7 @@ import { ItemWriter } from '../model/ItemWriter';
  * @see
  * https://jestjs.io/ja/docs/expect
  */
-describe('ItemReader', () => {
+describe('Test ItemReader', () => {
     beforeAll(() => {
         const storagePath = `${process.cwd()}/src/tests/storage/data.json`;
         if (!fs.existsSync(storagePath)) {
@@ -27,7 +27,6 @@ describe('ItemReader', () => {
         return true;
     });
     test('Read All Items', async () => {
-
         const reader = new ItemReader(`${process.cwd()}/src/tests/storage/data.json`);
         await reader.init()
         const expectedFirst = { 'keyword': 'exampleOrg', 'content': 'example.org' }
@@ -46,10 +45,11 @@ describe('ItemReader', () => {
 
         const expectedFirst = { 'keyword': 'exampleOrg', 'content': 'example.org' };
         const expectedSecond = { 'keyword': 'exampleCom', 'content': 'example.com' };
+
         expect(reader.readItem('exampleOrg', 'example.com')).toContainEqual(expectedFirst);
         expect(reader.readItem('exampleOrg', 'example.com')).toContainEqual(expectedSecond);
     });
-test('Read Item Strict', async () => {
+    test('Read Item Strict', async () => {
         const reader = new ItemReader(`${process.cwd()}/src/tests/storage/data.json`);
         await reader.init()
 
