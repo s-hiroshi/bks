@@ -6,6 +6,6 @@ export class VersionControl implements Control {
     }
 
     async execute() {
-        console.log('0.0.18');
+        console.log('0.0.19');
     }
 }
