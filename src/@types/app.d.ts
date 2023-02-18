@@ -18,12 +18,11 @@ type Reader = {
 type Writer = {
     add(item: Item)
     addAll(items: Item[])
-    edit(newItem:Item, oldItem: Item)
+    edit(newItem: Item, oldItem: Item)
     delete(keyword: string, content: string)
 }
-// type implementできる
 type Control = {
     controlCharactor: string;
     getControlCharactor(): string;
-    execute(query?:string);
+    execute(query?: string);
 }

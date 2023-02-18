@@ -7,7 +7,7 @@ import { ItemWriter } from '../model/ItemWriter';
  * @see
  * https://jestjs.io/ja/docs/expect
  */
-describe('ItemWriter', () => {
+describe('Test ItemWriter', () => {
     beforeAll(() => {
         const storagePath = `${process.cwd()}/src/tests/storage/data.json`;
         if (!fs.existsSync(storagePath)) {

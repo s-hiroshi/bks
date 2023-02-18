@@ -41,9 +41,9 @@ Available Commands:
 
   configure   Edit config file
   download    Dowonload from Gist
-  edit        Edit data file
-  find        Find data in file 
-  efind       Extended Finder is incremental search in data file
+  edit        Edit data in file
+  find        Find data in file
+  efind       Extended Finde is incremental search in data file
   help        Show help
   import      Import Google Chrome bookmark
   list        Show all bookmarks
@@ -56,11 +56,11 @@ Available Commands:
 
 e.g
 
-- `bks example.com`     Open https://example.com
-- `bks find`            Display choices from data file
-- `bks find keyword`    Display choices that correspond to keywords from data file
-- `bks efind`           Increment search in data file
-- `bks search keyword`  Search for keyword on Google
+- `bks example.com` Open https://example.com
+- `bks find` Display choices from data file
+- `bks find keyword` Display choices that correspond to keywords from data file
+- `bks efind` Increment search in data file
+- `bks search keyword` Search for keyword on Google
 
 ## Import Google Chrome bookmark
 
