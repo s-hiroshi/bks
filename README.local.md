@@ -2,8 +2,8 @@
 
 ## 公開方法
 
-1. package.jsonのバージョンをincrement
-1. VersionControlのバージョンをincrement
+1. package.json のバージョンを increment
+1. VersionControl のバージョンを increment
 1. npm login
 1. npm publish --access=public
 
@@ -24,19 +24,20 @@ ref. https://chaika.hatenablog.com/entry/2019/08/15/000000
 
 ## コマンド化
 
-コマンドとして動かすには、index.jsに`#!/usr/bin/env node`が必要
+コマンドとして動かすには、index.js に`#!/usr/bin/env node`が必要です。
 
 ref. https://stackoverflow.com/questions/34353512/node-npm-package-throw-use-strict-command-not-found-after-publish-and-install-g
 
 # Test
 
 <https://stackoverflow.com/questions/68351994/jest-mock-a-module-to-produce-different-results-on-function-calls>
+
 ## 内容
 
 Cli bookmark.
 
-Node.jsで作成したCLIブックマークランチャーアプリケーションです。  
-npmでグローバルにインストールして利用することを想定しています。  
+Node.js で作成した CLI ブックマークランチャーアプリケーションです。  
+npm でグローバルにインストールして利用することを想定しています。  
 ref. https://qiita.com/TsuyoshiUshio@github/items/850245c5fb40310ede9b
 
 ## ロードマップ
@@ -46,21 +47,20 @@ ref. https://qiita.com/TsuyoshiUshio@github/items/850245c5fb40310ede9b
   - キーワード
   - 表示名
 - 表示機能
-  - httpで始まる場合はそのものを表示
+  - http で始まる場合はそのものを表示
   - 候補がない場合は登録プロンプトを表示
 - マニュアルを充実させる <-- 実は一番大事
-- サイト検索の選択肢にNoを追加して選択された場合は、最初に戻る
+- サイト検索の選択肢に No を追加して選択された場合は、最初に戻る
 
 # 環境構築
 
-## TypeScript関連パッケージインストール
+## TypeScript 関連パッケージインストール
 
 ```sh
 // npmの初期設定
 $ npm init
 // TypeScript導入
 $ npm i typescript -D
-// TypeScriptをNode.jsで使用
 $ npm i @types/node
 // tsファイルを直接実行できるように
 $ npm i ts-node -D
@@ -70,9 +70,8 @@ $ npm i jsdoc -D
 
 ## テスト
 
-Jestを使用します。  
+Jest を使用します。  
 https://typescript-jp.gitbook.io/deep-dive/intro-1/jest
-
 
 ```sh
 $ npm i jest @types/jest ts-jest -D
@@ -84,7 +83,6 @@ $ npm i jest @types/jest ts-jest -D
 - `tests`をコンパイル対象から除外するために、`tsconfig.json`の`exclude`プロパティに追加します
 
 ※ プロジェクトルート直下`tests`を配置した場合に`VS Code`のデバッグが動作しなかったために`src`に配置しています。
-
 
 ## 依存パッケージ
 
@@ -119,14 +117,13 @@ $ node dist/index.js
 
 ## 型定義
 
-@typesディレクトリに配置すると自動でグローバルな型定義になる．
-本アプリケーションではapp.d.tsにまとめる．
+@types ディレクトリに配置すると自動でグローバルな型定義になる．
+本アプリケーションでは app.d.ts にまとめる．
 
 ## デバッグ
 
-- VS Codeの機能を使用
+- VS Code の機能を使用
 - `.vscode`に`launch.json`を作成
-
 
 ## GitHub
 
@@ -140,7 +137,6 @@ $ npm install octokit
 
 https://docs.github.com/ja/rest/reference/gists
 [octokit/rest.js](https://octokit.github.io/rest.js/v18)
-
 
 ```
 /*

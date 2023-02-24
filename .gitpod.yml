@@ -4,7 +4,3 @@
 
 tasks:
   - init: npm install && npm run build
-vscode:
-  extensions:
-    - dbaeumer.vscode-eslint
-
