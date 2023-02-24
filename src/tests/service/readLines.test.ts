@@ -3,20 +3,16 @@ const path = require("path");
 import { readLines } from "../../service/readLines";
 
 describe("Test readLines", () => {
+  const filePath = `${process.cwd()}/src/tests/storage/data.json`;
   beforeAll(async () => {
-    const storagePath = `${process.cwd()}/src/tests/storage/data.json`;
-    if (!fs.existsSync(storagePath)) {
-      fs.mkdirSync(
-        path.dirname(storagePath),
-        { recursive: true },
-        (err: any) => {
-          if (err) throw err;
-        }
-      );
+    if (!fs.existsSync(filePath)) {
+      fs.mkdirSync(path.dirname(filePath), { recursive: true }, (err: any) => {
+        if (err) throw err;
+      });
     }
 
     fs.writeFileSync(
-      storagePath,
+      filePath,
       JSON.stringify({
         items: [
           { keyword: "exampleOrg", content: "example.org" },
@@ -38,5 +34,11 @@ describe("Test readLines", () => {
     );
     expect(actual).toMatch(/example.org/);
     expect(actual).toMatch(/example.com/);
+  });
+
+  afterAll(() => {
+    fs.unlink(filePath, (err: Error) => {
+      if (err) throw err;
+    });
   });
 });
