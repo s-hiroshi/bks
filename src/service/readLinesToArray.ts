@@ -6,7 +6,7 @@ const readline = require("readline");
  * @param filePath
  * @returns
  */
-export async function readLines(filePath: string): Promise<string> {
+export async function readLinesToArray(filePath: string): Promise<string[]> {
   // @see https://blog.katsubemakito.net/nodejs/file-read
   const stream = fs.createReadStream(filePath, {
     encoding: "utf8",
@@ -18,9 +18,9 @@ export async function readLines(filePath: string): Promise<string> {
     crlfDelay: Infinity,
   });
 
-  let lines: string = "";
+  const lines: string[] = [];
   for await (const line of reader) {
-    lines += `${line}\n`;
+    lines.push(line);
   }
   return lines;
 }

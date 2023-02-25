@@ -12,7 +12,7 @@ export class ConfigureControl implements Control {
     STORAGE_PATH: `${this.homeDir}/.config/s-hiroshi/bks/data.json`,
     GITHUB_TOKEN: "",
     GIST_ID: "",
-    HISTORY_STORAGE_PATH: `${this.homeDir}/.config/s-hiroshi/bks/history`,
+    HISTORY_STORAGE_PATH: `${this.homeDir}/.config/s-hiroshi/bks/.history`,
   };
 
   getControlCharactor(): string {
