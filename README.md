@@ -2,6 +2,8 @@
 
 CLI bookmark launcher application for Mac.
 
+**This application is intended to be installed globally.**
+
 ## Set up
 
 ### Install
