@@ -1,47 +1,63 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+import { HistoryReader } from "../model/HistoryReader";
 import { createChoices } from "../service/createChoices";
 
 // export class HistoryControl implements Control {
 export class HistoryControl {
-  /*  controlCharactor = "history";
+  controlCharactor = "history";
 
-  private contents;
-  constructor(private reader: Reader) {}
+  private start: number;
+  constructor(private reader: HistoryReader) {}
 
   getControlCharactor(): string {
     return this.controlCharactor;
   }
 
   async execute(query?: string) {
-    // const histories:array = read('.history')
-
-    if (histories.length > 0) {
-      const contents = items.map((item, index) => {
-        return item.content;
+    let histories = this.reader.read(0, 10);
+    this.start = 0;
+    const choices = createChoices(histories, ["Exit", "Next", "Prev"]);
+    return this.choice(choices);
+  }
+  async choice(choices: string[]) {
+    const choiced = await inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "context",
+          message: "Which one do you want to open",
+          choices: choices,
+          loop: false,
+        },
+      ])
+      .then((answer: Answer) => {
+        return answer.context;
       });
-      const choices = createChoices(contents, ["Exit"]);
-      const choiced = await inquirer
-        .prompt([
-          {
-            type: "list",
-            name: "context",
-            message: "Which one do you want to open",
-            choices: choices,
-            loop: false,
-          },
+    if (choiced == "next") {
+      this.choice(
+        createChoices(this.read(this.start, 10, false), [
+          "Exit",
+          "Next",
+          "Prev",
         ])
-        .then((answer: Answer) => {
-          return answer.context;
-        });
-      if (choided == "next") {
-        // 次の10件
-      }
-      if (choiced == "prev") {
-      }
-      if (choiced !== "Exit") {
-        return choiced;
-      }
+      );
     }
-  } */
+    if (choiced == "prev") {
+      this.choice(
+        createChoices(this.read(this.start, 10, true), ["Exit", "Next", "Prev"])
+      );
+    }
+    if (choiced !== "Exit") {
+      return choiced;
+    }
+  }
+
+  read(start: number, offset: number, isReverse: boolean) {
+    if (isReverse) {
+      return this.reader.readReverse(start, offset);
+    } else {
+      return this.reader.read(start, offset);
+    }
+  }
 }

@@ -22,7 +22,9 @@ import { VersionControl } from "./control/VersionControl";
 import { ConfigureControl } from "./control/ConfigureControl";
 import { ImportControl } from "./control/ImportControl";
 import { createStorage } from "./service/createStorage";
+import { HistoryReader } from "./model/HistoryReader";
 import { HistoryWriter } from "./model/HistoryWriter";
+import { HistoryControl } from "./control/HistoryControl";
 
 const homeDir =
   process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
@@ -62,8 +64,9 @@ const app = async () => {
   const writer: Writer = new ItemWriter(storage);
   const historyWriter = new HistoryWriter(historyStorage);
   await historyWriter.init();
+  const historyReader = new HistoryReader(historyStorage);
+  await historyReader.init();
   const controlRepository: ControlRepository = new ControlRepository();
-
   controlRepository.add(new NewControl(writer));
   controlRepository.add(new SearchControl());
   controlRepository.add(new ListControl(reader));
@@ -77,6 +80,7 @@ const app = async () => {
   controlRepository.add(new VersionControl());
   controlRepository.add(new ConfigureControl());
   controlRepository.add(new ImportControl(writer));
+  controlRepository.add(new HistoryControl(historyReader))
 
   const controller = new Controller(
     reader,
