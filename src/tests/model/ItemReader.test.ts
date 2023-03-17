@@ -59,7 +59,7 @@ describe("Test ItemReader", () => {
   });
 
   afterAll(() => {
-    fs.unlink(filePath, (err: Error) => {
+    fs.unlinkSync(filePath, (err: Error) => {
       if (err) throw err;
     });
   });
