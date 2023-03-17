@@ -8,6 +8,7 @@ export class HistoryControl {
   controlCharactor = "history";
 
   private start: number;
+  private increment = 10;
   constructor(private reader: HistoryReader) {}
 
   getControlCharactor(): string {
@@ -20,6 +21,7 @@ export class HistoryControl {
     const choices = createChoices(histories, ["Exit", "Next", "Prev"]);
     return this.choice(choices);
   }
+
   async choice(choices: string[]) {
     const choiced = await inquirer
       .prompt([
@@ -34,22 +36,28 @@ export class HistoryControl {
       .then((answer: Answer) => {
         return answer.context;
       });
-    if (choiced == "next") {
+    if (choiced == "Next") {
+      this.start += this.increment;
       this.choice(
-        createChoices(this.read(this.start, 10, false), [
+        createChoices(this.read(this.start, this.increment, false), [
           "Exit",
           "Next",
           "Prev",
         ])
       );
     }
-    if (choiced == "prev") {
+    if (choiced == "Prev") {
       this.choice(
-        createChoices(this.read(this.start, 10, true), ["Exit", "Next", "Prev"])
+        createChoices(this.read(this.start, this.increment, true), [
+          "Exit",
+          "Next",
+          "Prev",
+        ])
       );
+      this.start -= this.increment;
     }
     if (choiced !== "Exit") {
-      return choiced;
+      return;
     }
   }
 

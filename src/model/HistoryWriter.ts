@@ -13,9 +13,12 @@ export class HistoryWriter {
 
   write(content: string) {
     if (this.getRows() < 10000) {
-      fs.writeFileSync(this.filePath, content, { flag: "a" }, (err: any) => {
+      fs.writeFileSync(this.filePath, content + "\n", { flag: "a" }, (err: any) => {
         if (err) throw err;
       });
+      return
     }
+    this.histories.pop();
+    this.histories.push(content + "\n");
   }
 }
