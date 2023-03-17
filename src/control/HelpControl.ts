@@ -49,6 +49,7 @@ Available Commands:
   find        Find bookmark in data file
   efind       Extended Find is incremental search in data file
   help        Show help
+  history     Show history
   import      Import Google Chrome bookmark
   list        Show all bookmarks
   new         Create a new bookmarks
