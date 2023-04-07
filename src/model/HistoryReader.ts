@@ -21,6 +21,7 @@ export class HistoryReader {
     });
     return targetHistories;
   }
+
   readReverse(start: number, offset: number) {
     const targetHistories: string[] = [];
     this.histories.forEach((history: string, i: number) => {
