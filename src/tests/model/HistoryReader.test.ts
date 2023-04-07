@@ -33,7 +33,11 @@ describe("Test HistroyReader", () => {
   });
 
   test("read", () => {
-    expect(reader.read(0, 2)).toEqual(["example.org","example.net"]);
+    expect(reader.read(0, 2)).toEqual(["example.net","example.org"]);
+  })
+
+  test("readReverse", () => {
+    expect(reader.readReverse(2, 2)).toEqual(["example.net","example.org"]);
   })
 
   afterAll(() => {
