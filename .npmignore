@@ -1,7 +1,7 @@
 /node_modules
 /src
 tsconfig.json
-README.local.md
+README.DEV.md
 .env
 storage/data.json
 .gitpod.yml
