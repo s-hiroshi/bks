@@ -1,6 +1,6 @@
 {
   "name": "@s-hiroshi/bks",
-  "version": "0.0.21",
+  "version": "0.0.23",
   "description": "Cli bookmarks application",
   "main": "dist/index.js",
   "types": "src/@type/app.d.ts",
@@ -13,8 +13,8 @@
   "bin": {
     "bks": "dist/index.js"
   },
-  "author": "Hiroshi Sawai",
-  "license": "ISC",
+  "author": "Hiroshi Sawai <info@info-town.jp>",
+  "license": "MIT",
   "dependencies": {
     "@types/inquirer": "^8.0.0",
     "@types/node": "^18.14.1",
@@ -33,6 +33,10 @@
     "npm-check-updates": "^16.7.9",
     "ts-jest": "^29.0.5",
     "typescript": "^4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s-hiroshi/bks.git"
   },
   "keywords": [
     "CLI",
