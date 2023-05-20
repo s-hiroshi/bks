@@ -13,7 +13,7 @@ export class ExpandedFinder implements Control {
   constructor(private reader: Reader) {
     const items: Item[] = reader.readAll();
     const contents = items.map((item, index) => {
-      return item.content;
+      return `keyword: ${item.keyword}\n  url: ${item.content}`;
     });
     this.choices = createChoices(contents, ["Exit"]);
   }
@@ -57,12 +57,16 @@ export class ExpandedFinder implements Control {
           },
         ])
         .then((answer: Answer) => {
-          console.log(answer.context);
           return answer.context;
         });
       if (choiced !== "Exit") {
-        return choiced;
+        return this.getChoicedItemUrl(choiced);
       }
     }
+  }
+  getChoicedItemUrl(choiced: string) {
+    const choice = choiced.split("\n");
+    const url = choice[1].trim().split(" ")[1];
+    return url;
   }
 }
