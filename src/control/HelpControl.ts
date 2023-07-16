@@ -19,6 +19,8 @@ $ npm i -g @s-hiroshi/bks
 
 ### Configuration
 
+After executing "npm install," make sure to issue the command "bks configure".
+
 $ bks configure
 
 #### Storage
