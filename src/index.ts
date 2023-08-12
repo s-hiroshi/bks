@@ -29,6 +29,7 @@ import { HistoryControl } from "./control/HistoryControl";
 const homeDir =
   process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
 
+// If the .env file does not exist, create it
 require("dotenv").config({ path: `${homeDir}/.config/s-hiroshi/bks/.env` });
 
 let storage = "";
