@@ -43,20 +43,21 @@ bks <command> <query>
 
 Available Commands:
 
-  configure   Edit config file
-  download    Dowonload data from Gist
-  edit        Edit bookmark in data file
-  find        Find bookmark in data file
-  efind       Extended Find is incremental search in data file
-  help        Show help
-  history     Show history
-  import      Import Google Chrome bookmark
-  list        Show all bookmarks
-  new         Create a new bookmarks
-  rm          Remove bookmark
-  search      Search on google
-  upload      Upload data to Gist
-  version     Print the version number
+  configure       Edit config file
+  configure show  Show config
+  download        Dowonload data from Gist
+  edit            Edit bookmark in data file
+  find            Find bookmark in data file
+  efind           Extended Find is incremental search in data file
+  help            Show help
+  history         Show history
+  import          Import Google Chrome bookmark
+  list            Show all bookmarks
+  new             Create a new bookmarks
+  rm              Remove bookmark
+  search          Search on google
+  upload          Upload data to Gist
+  version         Print the version number
 ```
 
 e.g

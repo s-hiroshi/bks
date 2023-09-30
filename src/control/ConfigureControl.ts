@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 import { createStorage } from "../service/createStorage";
+import { ConfigureShowControl } from "./ConfigureShowControl";
 
 export class ConfigureControl implements Control {
   controlCharactor = "configure";
@@ -19,7 +20,18 @@ export class ConfigureControl implements Control {
     return this.controlCharactor;
   }
 
-  async execute() {
+  async execute(query?: string) {
+    if (query != null) {
+      // TODO Refactor: Move to controller.ts
+      switch (query) {
+        case "show":
+          new ConfigureShowControl().execute();
+          break;
+        default:
+          break;
+      }
+      return;
+    }
     this.config.STORAGE_TYPE = await inquirer
       .prompt([
         {
