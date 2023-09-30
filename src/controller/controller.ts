@@ -14,8 +14,8 @@ export class Controller {
   async run(args: any) {
     const [command, query, ...subQeuries] = args;
     if (!command) {
-      const control = this.controlRepository.find('help');
-      control?.execute()
+      const control = this.controlRepository.find("help");
+      control?.execute();
       return;
     }
     const control = this.controlRepository.find(command);

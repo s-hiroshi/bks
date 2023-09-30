@@ -81,7 +81,7 @@ const app = async () => {
   controlRepository.add(new VersionControl());
   controlRepository.add(new ConfigureControl());
   controlRepository.add(new ImportControl(writer));
-  controlRepository.add(new HistoryControl(historyReader))
+  controlRepository.add(new HistoryControl(historyReader));
 
   const controller = new Controller(
     reader,
