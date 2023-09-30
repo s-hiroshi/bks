@@ -1,12 +1,12 @@
 export class HelpControl implements Control {
-    controlCharactor = 'help';
+  controlCharactor = "help";
 
-    getControlCharactor(): string {
-        return this.controlCharactor
-    }
+  getControlCharactor(): string {
+    return this.controlCharactor;
+  }
 
-    async execute() {
-        const content = `
+  async execute() {
+    const content = `
 # bks
 
 CLI bookmark launcher application for Mac.
@@ -45,20 +45,21 @@ bks <command> <query>
 
 Available Commands:
 
-  configure   Edit config file
-  download    Dowonload data from Gist
-  edit        Edit bookmark in data file
-  find        Find bookmark in data file
-  efind       Extended Find is incremental search in data file
-  help        Show help
-  history     Show history
-  import      Import Google Chrome bookmark
-  list        Show all bookmarks
-  new         Create a new bookmarks
-  rm          Remove bookmark
-  search      Search on google
-  upload      Upload to Gist
-  version     Print the version numbe
+  configure           Edit config file
+  configure show      Show configure
+  download            Dowonload data from Gist
+  edit                Edit bookmark in data file
+  find                Find bookmark in data file
+  efind               Extended Find is incremental search in data file
+  help                Show help
+  history             Show history
+  import              Import Google Chrome bookmark
+  list                Show all bookmarks
+  new                 Create a new bookmarks
+  rm                  Remove bookmark
+  search              Search on google
+  upload              Upload to Gist
+  version             Print the version numbe
 e.g
 
 - bks example.com     Open https://example.com
@@ -74,7 +75,7 @@ This command overwrites, not appends!!
 1. manual Export Google Chrome bookmark file(.html)
 1. bks import
 1. Imput exported Google Chrome bookmark file(1.)
-`
-        console.log(content);
-    }
+`;
+    console.log(content);
+  }
 }
