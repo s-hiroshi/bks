@@ -1,7 +1,10 @@
 {
   "name": "@s-hiroshi/bks",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Cli bookmarks application",
+  "engines": {
+    "node": ">=14.18.0"
+  },
   "main": "dist/index.js",
   "types": "src/@type/app.d.ts",
   "scripts": {
