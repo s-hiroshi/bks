@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+import { DotEnvHelper } from "../service/DotEnvHelper";
 import { createStorage } from "../service/createStorage";
+import { ConfigureSetControl } from "./ConfigureSetControl";
 import { ConfigureShowControl } from "./ConfigureShowControl";
 
 export class ConfigureControl implements Control {
@@ -22,8 +24,11 @@ export class ConfigureControl implements Control {
 
   async execute(query?: string) {
     if (query != null) {
-      // TODO Refactor: Move to controller.ts
+      // TODO: Move to controller.ts
       switch (query) {
+        case "set":
+          new ConfigureSetControl().execute();
+          break;
         case "show":
           new ConfigureShowControl().execute();
           break;
@@ -33,82 +38,34 @@ export class ConfigureControl implements Control {
       return;
     }
     this.config.STORAGE_TYPE = await inquirer
-      .prompt([
-        {
-          type: "list",
-          name: "context",
-          message: "Which one do you want to configure",
-          choices: this.storageTypes,
-          loop: false,
-        },
-      ])
+      .prompt(DotEnvHelper.getPromptOption("STORAGE_TYPE"))
       .then((answer: Answer) => {
         return answer.context;
       });
 
-    if (this.config.STORAGE_TYPE === "local") {
-      this.config.STORAGE_PATH = await inquirer
-        .prompt([
-          {
-            name: "context",
-            message: "Input local data storage path",
-            default: `${this.homeDir}/.config/s-hiroshi/bks/data.json`,
-            loop: false,
-          },
-        ])
-        .then((answer: Answer) => {
-          return answer.context;
-        });
-      createStorage(this.config.STORAGE_PATH);
-    }
-    if (this.config.STORAGE_TYPE === "GitHub") {
-      this.config.STORAGE_PATH = await inquirer
-        .prompt([
-          {
-            name: "context",
-            message: "Input local data storage path",
-            default: `${this.homeDir}/.config/s-hiroshi/bks/data.json`,
-            loop: false,
-          },
-        ])
-        .then((answer: Answer) => {
-          return answer.context;
-        });
-      createStorage(this.config.STORAGE_PATH);
+    this.config.STORAGE_PATH = await inquirer
+      .prompt(DotEnvHelper.getPromptOption("STORAGE_PATH"))
+      .then((answer: Answer) => {
+        return answer.context;
+      });
+    createStorage(this.config.STORAGE_PATH);
 
+    if (this.config.STORAGE_TYPE === "GitHub") {
       this.config.GITHUB_TOKEN = await inquirer
-        .prompt([
-          {
-            name: "context",
-            message: "Input GitHub personal access token",
-            loop: false,
-          },
-        ])
+        .prompt(DotEnvHelper.getPromptOption("GITHUB_TOKEN"))
         .then((answer: Answer) => {
           return answer.context;
         });
 
       this.config.GIST_ID = await inquirer
-        .prompt([
-          {
-            name: "context",
-            message: "Input gist id",
-            loop: false,
-          },
-        ])
+        .prompt(DotEnvHelper.getPromptOption("GIST_ID"))
         .then((answer: Answer) => {
           return answer.context;
         });
     }
+
     this.config.HISTORY_STORAGE_PATH = await inquirer
-      .prompt([
-        {
-          name: "context",
-          message: "Input History File(Optionl)",
-          default: `${this.homeDir}/.config/s-hiroshi/bks/.history`,
-          loop: false,
-        },
-      ])
+      .prompt(DotEnvHelper.getPromptOption("HISTORY_STORAGE_PATH"))
       .then((answer: Answer) => {
         return answer.context;
       });

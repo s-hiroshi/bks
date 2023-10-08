@@ -1,9 +1,8 @@
-const inquirer = require("inquirer");
-const fs = require("fs");
 import { readLines } from "../service/readLines";
 
 export class ConfigureShowControl implements Control {
-  controlCharactor = "configure list";
+  // TODO: remove for controlCharactor is unused
+  controlCharactor = "configure show";
   private homeDir =
     process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
   private configPath = `${this.homeDir}/.config/s-hiroshi/bks/.env`;
