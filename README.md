@@ -45,6 +45,7 @@ Available Commands:
 
   configure       Edit config file
   configure show  Show config
+  configure set   Edit config property
   download        Dowonload data from Gist
   edit            Edit bookmark in data file
   find            Find bookmark in data file
